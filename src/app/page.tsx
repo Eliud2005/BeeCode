@@ -88,7 +88,7 @@ export default function Home() {
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50 text-gray-900 pt-24">
         <section id="inicio" className="flex flex-col items-center justify-center text-center py-32 px-6">
           <Image
-            src="/assests/bee7.png"
+            src="/assets/bee7.png"
             alt="Eliud profile picture"
             width={160}
             height={160}
@@ -98,7 +98,7 @@ export default function Home() {
             Hola, soy <span className="text-blue-600">Eliud</span> 👋
           </h1>
           <p className="text-lg md:text-xl max-w-2xl mb-6 text-gray-700">
-            Soy desarrollador web y entusiasta de la programación...
+            Desarrollador web y entusiasta de la programación, transformo problemas en oportunidades.
           </p>
           <div className="flex gap-4">
             <a href="#proyectos" className="bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700 transition">Ver proyectos</a>
