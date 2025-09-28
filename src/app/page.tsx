@@ -19,9 +19,9 @@ export default function Home() {
   const prev = () => setIndex(i => (i <= 0 ? Math.max(0, proyectos.length - 3) : i - 1));
   const next = () => setIndex(i => (i >= proyectos.length - 3 ? 0 : i + 1));
 
-  // Funciones para reseñas
-  const prevResena = () => setResenaIndex(i => (i <= 0 ? Math.max(0, resenas.length - 3) : i - 1));
-  const nextResena = () => setResenaIndex(i => (i >= resenas.length - 3 ? 0 : i + 1));
+// Funciones para reseñas - una card por vez
+const prevResena = () => setResenaIndex(i => (i <= 0 ? resenas.length - 1 : i - 1));
+const nextResena = () => setResenaIndex(i => (i >= resenas.length - 1 ? 0 : i + 1));
 
   return (
     <>
@@ -67,7 +67,7 @@ export default function Home() {
             <button onClick={next} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8594;</button>
 
             <div className="overflow-hidden">
-              <div className="flex transition-transform duration-500 gap-8" style={{ transform: `translateX(-${(index * 100) / 3}%)` }}>
+              <div className="flex transition-transform duration-500 gap-8" style={{ transform: `translateX(-${(index * 100)}%)` }}>
                 {proyectos.map((p, i) => (
                   <div key={i} className="flex-none w-1/3 min-w-0 bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition">
                     <h3 className="font-semibold text-xl mb-2">{p.title}</h3>
@@ -87,14 +87,14 @@ export default function Home() {
         {/* Carrusel de Reseñas */}
         <section id="reseñas" className="py-20 px-6 bg-gray-50">
           <h2 className="text-3xl font-bold text-center mb-12">⭐ Reseñas</h2>
-          <div className="relative max-w-6xl mx-auto">
+          <div className="relative max-w-md mx-auto">
             <button onClick={prevResena} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8592;</button>
             <button onClick={nextResena} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8594;</button>
 
             <div className="overflow-hidden">
-              <div className="flex transition-transform duration-500 gap-8" style={{ transform: `translateX(-${(resenaIndex * 100) / 3}%)` }}>
+              <div className="flex transition-transform duration-500 gap-4" style={{ transform: `translateX(-${(resenaIndex * 100)}%)` }}>
                 {resenas.map((r, i) => (
-                  <div key={i} className="flex-none w-1/3 min-w-0 bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+                  <div key={i} className="flex-none w-full min-w-0 bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
                     <p className="text-gray-700 mb-4">"{r.mensaje}"</p>
                     <h3 className="font-semibold text-lg">{r.nombre}</h3>
                     <span className="text-yellow-500">{"★".repeat(r.estrellas)}{"☆".repeat(5-r.estrellas)}</span>

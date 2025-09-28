@@ -22,8 +22,9 @@ export const proyectos = [
 ];
 export const resenas = [
   { nombre: "Juan P.", mensaje: "Excelente trabajo, rápido y profesional.", estrellas: 5 },
+  { nombre: "Pedro.", mensaje: "Excelente trabajo, rápido y profesional.", estrellas: 5 },
   { nombre: "María L.", mensaje: "Me ayudó mucho con mi web.", estrellas: 4 },
-  { nombre: "María L.", mensaje: "Me ayudó mucho con mi web.", estrellas: 4 },
-  { nombre: "María L.", mensaje: "Me ayudó mucho con mi web.", estrellas: 4 },
+  { nombre: "Laura.", mensaje: "Me ayudó mucho con mi web.", estrellas: 4 },
+  { nombre: "sakura.", mensaje: "Me ayudó mucho con mi web.", estrellas: 4 },
   // ...
 ];
