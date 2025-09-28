@@ -149,7 +149,8 @@ export default function Home() {
               <div className="flex transition-transform duration-500 gap-4" style={{ transform: `translateX(-${(resenaIndex * 100)}%)` }}>
                 {resenas.map((r, i) => (
                   <div key={i} className="flex-none w-full min-w-0 bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-                    <p className="text-gray-700 mb-4">"{r.mensaje}"</p>
+                    <p className="text-gray-700 mb-4">{`"${r.mensaje}"`}</p>
+
                     <h3 className="font-semibold text-lg">{r.nombre}</h3>
                     <span className="text-yellow-500">{"★".repeat(r.estrellas)}{"☆".repeat(5-r.estrellas)}</span>
                   </div>
