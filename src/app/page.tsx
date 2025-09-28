@@ -88,7 +88,7 @@ export default function Home() {
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50 text-gray-900 pt-24">
         <section id="inicio" className="flex flex-col items-center justify-center text-center py-32 px-6">
           <Image
-            src="/assests/bee1.png"
+            src="/assests/bee7.png"
             alt="Eliud profile picture"
             width={160}
             height={160}
