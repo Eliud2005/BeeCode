@@ -20,7 +20,7 @@ export default function ProyectoPage({ params }: ProyectoPageProps) {
       <p className="mb-4">{proyecto.desc}</p>
       {proyecto.url && (
         <a href={proyecto.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-          Ir al proyecto
+          Ir al proyecto 
         </a>
       )}
     </div>
