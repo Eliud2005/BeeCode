@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { proyectos, resenas } from "./proyectos/data"; // 🔹 importa los datos
 
 const crearSlug = (title: string) =>
@@ -12,30 +12,77 @@ const crearSlug = (title: string) =>
     .replace(/[^\w-]+/g, "");
 
 export default function Home() {
-  const [index, setIndex] = useState(0);          // Proyectos
+  const [index, setIndex] = useState(0); // Proyectos
+  const [itemsPerView, setItemsPerView] = useState(3); // 🔹 cantidad visible
   const [resenaIndex, setResenaIndex] = useState(0); // Reseñas
+  const [menuOpen, setMenuOpen] = useState(false);
+
+
+  // Ajustar proyectos según el tamaño de pantalla
+  useEffect(() => {
+    const updateItems = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerView(1); // móvil
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2); // tablet
+      } else {
+        setItemsPerView(3); // desktop
+      }
+    };
+
+    updateItems();
+    window.addEventListener("resize", updateItems);
+    return () => window.removeEventListener("resize", updateItems);
+  }, []);
 
   // Funciones para proyectos
-  const prev = () => setIndex(i => (i <= 0 ? Math.max(0, proyectos.length - 3) : i - 1));
-  const next = () => setIndex(i => (i >= proyectos.length - 3 ? 0 : i + 1));
+  const prev = () =>
+    setIndex(i => (i <= 0 ? Math.max(0, proyectos.length - itemsPerView) : i - 1));
 
-// Funciones para reseñas - una card por vez
-const prevResena = () => setResenaIndex(i => (i <= 0 ? resenas.length - 1 : i - 1));
-const nextResena = () => setResenaIndex(i => (i >= resenas.length - 1 ? 0 : i + 1));
+  const next = () =>
+    setIndex(i => (i >= proyectos.length - itemsPerView ? 0 : i + 1));
+
+  // Funciones para reseñas - una card por vez
+  const prevResena = () =>
+    setResenaIndex(i => (i <= 0 ? resenas.length - 1 : i - 1));
+  const nextResena = () =>
+    setResenaIndex(i => (i >= resenas.length - 1 ? 0 : i + 1));
 
   return (
     <>
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow z-50">
-        <nav className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
-          <a href="#" className="text-xl font-bold text-blue-600">BeeCode</a>
-          <div className="hidden md:flex gap-6">
-            <a href="#inicio" className="text-gray-700 hover:text-blue-600 transition">Inicio</a>
-            <a href="#proyectos" className="text-gray-700 hover:text-blue-600 transition">Proyectos</a>
-            <a href="#contacto" className="text-gray-700 hover:text-blue-600 transition">Contacto</a>
-          </div>
-        </nav>
-      </header>
+   <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow z-50">
+  <nav className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+    <a href="#" className="text-xl font-bold text-blue-600">BeeCode</a>
+
+    {/* Menú desktop */}
+    <div className="hidden md:flex gap-6">
+      <a href="#inicio" className="text-gray-700 hover:text-blue-600 transition">Inicio</a>
+      <a href="#proyectos" className="text-gray-700 hover:text-blue-600 transition">Proyectos</a>
+      <a href="#contacto" className="text-gray-700 hover:text-blue-600 transition">Contacto</a>
+    </div>
+
+    {/* Botón hamburguesa (solo móvil) */}
+    <div className="md:hidden">
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="p-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
+      >
+        {menuOpen ? "✖" : "☰"}
+      </button>
+    </div>
+  </nav>
+
+  {/* Menú móvil */}
+  {menuOpen && (
+    <div className="md:hidden bg-white shadow-lg flex flex-col items-center gap-4 py-4">
+      <a href="#inicio" className="text-gray-700 hover:text-blue-600 transition">Inicio</a>
+      <a href="#proyectos" className="text-gray-700 hover:text-blue-600 transition">Proyectos</a>
+      <a href="#contacto" className="text-gray-700 hover:text-blue-600 transition">Contacto</a>
+    </div>
+  )}
+</header>
+
 
       {/* Inicio */}
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50 text-gray-900 pt-24">
@@ -67,9 +114,16 @@ const nextResena = () => setResenaIndex(i => (i >= resenas.length - 1 ? 0 : i + 
             <button onClick={next} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8594;</button>
 
             <div className="overflow-hidden">
-              <div className="flex transition-transform duration-500 gap-8" style={{ transform: `translateX(-${(index * 100)}%)` }}>
+              <div
+                className="flex transition-transform duration-500 gap-6"
+                style={{ transform: `translateX(-${index * (100 / itemsPerView)}%)` }}
+              >
                 {proyectos.map((p, i) => (
-                  <div key={i} className="flex-none w-1/3 min-w-0 bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition">
+                  <div
+                    key={i}
+                    className="flex-none bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition"
+                    style={{ width: `${100 / itemsPerView}%` }}
+                  >
                     <h3 className="font-semibold text-xl mb-2">{p.title}</h3>
                     <p className="text-gray-600 mb-4">{p.desc}</p>
                     {p.url ? (
@@ -125,7 +179,6 @@ const nextResena = () => setResenaIndex(i => (i >= resenas.length - 1 ? 0 : i + 
             </svg>
           </a>
         </section>
-
       </main>
     </>
   );
