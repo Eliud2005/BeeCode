@@ -2,7 +2,7 @@ export const proyectos = [
   {
     title: "Plataforma de conexión para hospitales, farmacias y laboratorios",
     desc: "Proyecto que permite registrar hospitales, farmacias y laboratorios, mostrando su ubicación en un mapa interactivo.",
-    url: null,
+    url: '',
     images: [
       "/assets/atenea/ateneaHome.png",
       "/assets/atenea/atenea1.png",
@@ -20,11 +20,11 @@ export const proyectos = [
   {
     title: "Sistema de gestión ciudadana – Santo Tomás Jalieza",
     desc: "Desarrollo de una plataforma para gestionar información de los habitantes y servicios públicos del municipio, implementando registro y consultas.",
-    url: "https://www.youtube.com/watch?v=W5Sq71VTJ9Q&list=RD3bWIu15MqxY&index=2",
+    url: '',
     images: [
-      "/img/gestion-1.jpg",
-      "/img/gestion-2.jpg",
-      "/img/gestion-3.jpg",
+      "/assets/jalieza/jalieza1.jpg",
+      "/assets/jalieza/jalieza2.jpg",
+      "/assets/jalieza/jalieza3.jpg",
     ],
   },
   {
