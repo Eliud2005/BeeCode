@@ -236,7 +236,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">📩 Contáctame</h2>
 
           <form
-            action="https://formspree.io/f/mzzjdypv"
+            action="https://formspree.io/f/mgvgydae"
             method="POST"
             className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow space-y-4"
           >
