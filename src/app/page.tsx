@@ -102,8 +102,46 @@ export default function Home() {
         <section id="proyectos" className="py-20 px-6 bg-white">
           <h2 className="text-3xl font-bold text-center mb-12">🚀 Mis proyectos</h2>
           <div className="relative max-w-6xl mx-auto">
-            <button onClick={prev} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8592;</button>
-            <button onClick={next} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8594;</button>
+<button
+  onClick={prev}
+  className="
+    absolute -left-12
+    top-1/2 -translate-y-1/2
+    bg-white/90 backdrop-blur
+    border border-gray-300
+    p-3
+    rounded-full
+    shadow-lg
+    hover:scale-110 hover:bg-white
+    transition
+    z-20
+  "
+>
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
+    <path d="M15 19l-7-7 7-7" />
+  </svg>
+</button>
+
+<button
+  onClick={next}
+  className="
+    absolute -right-12
+    top-1/2 -translate-y-1/2
+    bg-white/90 backdrop-blur
+    border border-gray-300
+    p-3
+    rounded-full
+    shadow-lg
+    hover:scale-110 hover:bg-white
+    transition
+    z-20
+  "
+>
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
+    <path d="M9 5l7 7-7 7" />
+  </svg>
+</button>
+
 
             <div className="overflow-hidden">
               <div
@@ -135,8 +173,46 @@ export default function Home() {
         <section id="reseñas" className="py-20 px-6 bg-gray-50">
           <h2 className="text-3xl font-bold text-center mb-12">⭐ Reseñas</h2>
           <div className="relative max-w-md mx-auto">
-            <button onClick={prevResena} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8592;</button>
-            <button onClick={nextResena} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700 transition z-10">&#8594;</button>
+<button
+  onClick={prevResena}
+  className="
+    absolute -left-12
+    top-1/2 -translate-y-1/2
+    bg-white/90 backdrop-blur
+    border border-gray-300
+    p-3
+    rounded-full
+    shadow-lg
+    hover:scale-110 hover:bg-white
+    transition
+    z-20
+  "
+>
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
+    <path d="M15 19l-7-7 7-7" />
+  </svg>
+</button>
+
+<button
+  onClick={nextResena}
+  className="
+    absolute -right-12
+    top-1/2 -translate-y-1/2
+    bg-white/90 backdrop-blur
+    border border-gray-300
+    p-3
+    rounded-full
+    shadow-lg
+    hover:scale-110 hover:bg-white
+    transition
+    z-20
+  "
+>
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
+    <path d="M9 5l7 7-7 7" />
+  </svg>
+</button>
+
 
             <div className="overflow-hidden">
               <div className="flex transition-transform duration-500 gap-4"

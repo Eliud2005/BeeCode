@@ -1,37 +1,49 @@
 @import "tailwindcss";
 
+/* ======= ROOT COLORS ======= */
 :root {
-  /* Fondo y texto base */
-  --background: #f9fafb; /* gris muy claro en vez de blanco puro */
-  --foreground: #171717;
+  --background: #f3f4f6; /* slate-100 */
+  --foreground: #0f172a; /* slate-900 */
 
-  /* Colores de acento */
-  --primary: #2563eb;   /* azul tailwind-600 */
-  --secondary: #64748b; /* slate-500 */
+  --primary: #2563eb;
+  --secondary: #64748b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-
-  --font-sans: var(--font-geist-sans, Arial, Helvetica, sans-serif);
-  --font-mono: var(--font-geist-mono, monospace);
-}
-
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;  /* negro elegante */
-    --foreground: #e5e5e5;  /* gris claro */
-    --primary: #3b82f6;     /* azul un poco más brillante en dark */
-    --secondary: #94a3b8;   /* slate-400 */
+    --background: #0b0b0c;
+    --foreground: #e5e5e5;
+
+    --bg-gradient-start: #0f0f10;
+    --bg-gradient-end: #1a1a1d;
   }
 }
 
+/* ======= APPLY BACKGROUND ======= */
 body {
-  background: var(--background);
+  /* Gradiente premium */
+  background: linear-gradient(
+    145deg,
+    var(--bg-gradient-start),
+    var(--bg-gradient-end)
+  );
+
+  /* Noise elegante */
+  position: relative;
   color: var(--foreground);
   font-family: var(--font-sans);
-  transition: background 0.3s ease, color 0.3s ease;
+transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background: url("/noise.png");
+  opacity: 0.05;       /* Intensidad del noise, 0.05 = perfecto */
+  mix-blend-mode: overlay;
 }
