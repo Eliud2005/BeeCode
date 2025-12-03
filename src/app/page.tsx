@@ -278,19 +278,22 @@ export default function Home() {
       </a>
 
       {/* Gmail */}
-      <a 
-        href="mailto:beecode.mx@gmail.com"
-        className="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition"
-      >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="32" height="32"
-          viewBox="0 0 48 48"
-        >
-          <path fill="#e75a4d" d="M40 39h-4V23.1L24 31.5 12 23.1V39H8V9l16 12 16-12z"/>
-          <path fill="#f2f2f2" d="m24 21l16-12H8z"/>
-        </svg>
-      </a>
+     {/* Gmail */}
+<a 
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=beecode.mx@gmail.com" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition"
+>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="32" height="32"
+    viewBox="0 0 48 48"
+  >
+    <path fill="#e75a4d" d="M40 39h-4V23.1L24 31.5 12 23.1V39H8V9l16 12 16-12z"/>
+    <path fill="#f2f2f2" d="m24 21l16-12H8z"/>
+  </svg>
+</a>
 
       {/* LinkedIn */}
       <a 
