@@ -105,43 +105,39 @@ export default function Home() {
 <button
   onClick={prev}
   className="
-    absolute -left-12
-    top-1/2 -translate-y-1/2
-    bg-white/90 backdrop-blur
-    border border-gray-300
-    p-3
-    rounded-full
-    shadow-lg
-    hover:scale-110 hover:bg-white
+    absolute left-0 inset-y-0
+    w-14
+    flex items-center justify-center
+    bg-gradient-to-r from-blue-600/90 to-blue-600/10
+    text-white text-3xl font-bold
+    md:-left-12 md:inset-y-auto md:top-1/2 md:-translate-y-1/2
+    md:w-auto md:bg-blue-600 md:p-3 md:rounded-full md:shadow-lg
+    hover:from-blue-700 hover:to-blue-700/20
     transition
     z-20
   "
 >
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
-    <path d="M15 19l-7-7 7-7" />
-  </svg>
+  ❮
 </button>
+
 
 <button
   onClick={next}
   className="
-    absolute -right-12
-    top-1/2 -translate-y-1/2
-    bg-white/90 backdrop-blur
-    border border-gray-300
-    p-3
-    rounded-full
-    shadow-lg
-    hover:scale-110 hover:bg-white
+    absolute right-0 inset-y-0
+    w-14
+    flex items-center justify-center
+    bg-gradient-to-l from-blue-600/90 to-blue-600/10
+    text-white text-3xl font-bold
+    md:-right-12 md:inset-y-auto md:top-1/2 md:-translate-y-1/2
+    md:w-auto md:bg-blue-600 md:p-3 md:rounded-full md:shadow-lg
+    hover:from-blue-700 hover:to-blue-700/20
     transition
     z-20
   "
 >
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
-    <path d="M9 5l7 7-7 7" />
-  </svg>
+  ❯
 </button>
-
 
             <div className="overflow-hidden">
               <div
@@ -173,46 +169,45 @@ export default function Home() {
         <section id="reseñas" className="py-20 px-6 bg-gray-50">
           <h2 className="text-3xl font-bold text-center mb-12">⭐ Reseñas</h2>
           <div className="relative max-w-md mx-auto">
+         
 <button
   onClick={prevResena}
   className="
-    absolute -left-12
-    top-1/2 -translate-y-1/2
-    bg-white/90 backdrop-blur
-    border border-gray-300
-    p-3
-    rounded-full
-    shadow-lg
-    hover:scale-110 hover:bg-white
+    absolute left-0 inset-y-0
+    w-12
+    flex items-center justify-center
+    bg-gradient-to-r from-blue-600/90 to-blue-600/10
+    text-white text-2xl font-bold
+    md:-left-12 md:inset-y-auto md:top-1/2 md:-translate-y-1/2
+    md:w-auto md:bg-blue-600 md:p-3 md:rounded-full md:shadow-lg
+    hover:from-blue-700 hover:to-blue-700/20
+    active:scale-95
     transition
     z-20
   "
 >
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
-    <path d="M15 19l-7-7 7-7" />
-  </svg>
+  ❮
 </button>
+
 
 <button
   onClick={nextResena}
   className="
-    absolute -right-12
-    top-1/2 -translate-y-1/2
-    bg-white/90 backdrop-blur
-    border border-gray-300
-    p-3
-    rounded-full
-    shadow-lg
-    hover:scale-110 hover:bg-white
+    absolute right-0 inset-y-0
+    w-12
+    flex items-center justify-center
+    bg-gradient-to-l from-blue-600/90 to-blue-600/10
+    text-white text-2xl font-bold
+    md:-right-12 md:inset-y-auto md:top-1/2 md:-translate-y-1/2
+    md:w-auto md:bg-blue-600 md:p-3 md:rounded-full md:shadow-lg
+    hover:from-blue-700 hover:to-blue-700/20
+    active:scale-95
     transition
     z-20
   "
 >
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24">
-    <path d="M9 5l7 7-7 7" />
-  </svg>
+  ❯
 </button>
-
 
             <div className="overflow-hidden">
               <div className="flex transition-transform duration-500 gap-4"
@@ -251,7 +246,7 @@ export default function Home() {
         </section>
 
       {/* Botón flotante de contacto */}
-<div className="fixed bottom-6 right-6 flex flex-col items-end z-50">
+<div className="fixed bottom-6 right-6 flex flex-col items-start z-50">
 
   {/* Opciones del menú */}
   {menuOpen && (

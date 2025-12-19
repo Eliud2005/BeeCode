@@ -47,3 +47,7 @@ body::before {
   opacity: 0.05;       /* Intensidad del noise, 0.05 = perfecto */
   mix-blend-mode: overlay;
 }
+/* Oculta completamente el indicador de desarrollo de Next.js */
+.nextjs-portal {
+  display: none !important;
+}
