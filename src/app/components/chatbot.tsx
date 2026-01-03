@@ -89,7 +89,7 @@ export default function Chatbot() {
           <div className="px-4 py-3 flex justify-between items-center border-b bg-white/80 backdrop-blur">
             <div>
               <p className="font-semibold text-sm text-black">
-                Asistente BeeCode
+                Asistente AI
               </p>
               <span className="text-xs text-green-600">● En línea</span>
             </div>

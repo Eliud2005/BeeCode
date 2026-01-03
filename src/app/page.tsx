@@ -46,13 +46,13 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow z-50">
         <nav className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
-          <a href="#" className="text-xl font-bold text-blue-600">BeeCode</a>
+          <a href="#" className="text-xl font-bold text-blue-600">Eliud</a>
 
           {/* Menú desktop */}
           <div className="hidden md:flex gap-6">
-            <a href="#inicio" className="text-gray-700 hover:text-blue-600 transition">Inicio</a>
-            <a href="#proyectos" className="text-gray-700 hover:text-blue-600 transition">Proyectos</a>
-            <a href="#contacto" className="text-gray-700 hover:text-blue-600 transition">Contacto</a>
+            <a href="#inicio" className="text-black hover:text-blue-600 transition">Inicio</a>
+            <a href="#proyectos" className="text-black hover:text-blue-600 transition">Proyectos</a>
+            <a href="#contacto" className="text-black hover:text-blue-600 transition">Contacto</a>
           </div>
 
           {/* Menú móvil */}
@@ -80,7 +80,7 @@ export default function Home() {
 
         <section id="inicio" className="flex flex-col items-center justify-center text-center py-32 px-6">
           <Image
-            src="/assets/bee7.png"
+            src="/assets/gota.png"
             alt="Eliud profile picture"
             width={160}
             height={160}
@@ -89,8 +89,8 @@ export default function Home() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Hola, soy <span className="text-blue-600">Eliud</span> 👋
           </h1>
-          <p className="text-lg md:text-xl max-w-2xl mb-6 text-gray-700">
-            Fundador de BeeCode, desarrollador web y entusiasta de la programación, transformo problemas en oportunidades.
+          <p className="text-lg md:text-xl max-w-2xl mb-6 text-black">
+            Desarrollador web y entusiasta de la programación, transformo problemas en oportunidades.
           </p>
           <div className="flex gap-4">
             <a href="#proyectos" className="bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700 transition">Ver proyectos</a>
@@ -327,7 +327,7 @@ export default function Home() {
   "
 >
   <img 
-  src="/assets/bee.svg"
+  src="/assets/gota.png"
   alt="BeeCode Logo"
   className={`
     w-8 h-8
