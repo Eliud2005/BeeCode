@@ -37,7 +37,7 @@ export default function Home() {
   const nextResena = () => setResenaIndex(i => (i >= resenas.length - 1 ? 0 : i + 1));
 
   return (
-    <div className="relative min-h-screen bg-[#0b0b0c] text-slate-200 selection:bg-blue-500/30">
+    <div className="relative min-h-screen bg-[#0b0b0c] text-slate-200 selection:bg-blue-500/30 overflow-x-hidden">
       
       {/* HEADER GLASSMORPHISM */}
       <header className="fixed top-0 left-0 w-full bg-[#0b0b0c]/50 backdrop-blur-xl border-b border-white/5 z-[100]">
@@ -70,18 +70,76 @@ export default function Home() {
           {/* Luces de fondo estilo Figma */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] z-0" />
           
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-            className="relative z-10"
-          >
-            <div className="relative w-40 h-40 mx-auto mb-8 p-1 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full shadow-2xl shadow-blue-500/20">
-              <Image src="/assets/gota.png" alt="Eliud" width={160} height={160} className="rounded-full bg-[#0b0b0c] p-2" />
+          <div className="relative z-10">
+            {/* CONTENEDOR DE LA GOTA Y EL EFECTO AGUA */}
+            <div className="relative w-40 h-40 mx-auto mb-8 flex items-center justify-center">
+              
+              {/* GOTA PRINCIPAL CON ANIMACIÓN COMPLEJA */}
+              <motion.div 
+                initial={{ y: -900, opacity: 1, scale: 0.2 }} 
+                animate={{ 
+                  y: [null, 0, 20, 0], // Cae, se hunde un poco, reaparece flotando
+                  opacity: [null, 1, 0, 1], // Desaparece al chocar, reaparece al flotar
+                  scale: [null, 1, 1.3, 1], // Se expande un poco en el "choque"
+                }}
+                transition={{ 
+                  times: [0, 0.4, 0.5, 0.8], // Control exacto del timing de la secuencia
+                  duration: 2.2,
+                  ease: "easeInOut",
+                  delay: 0.2,
+                }}
+                className="relative p-1 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full shadow-[0_0_60px_rgba(59,130,246,0.5)] z-20"
+              >
+                {/* Animación de flotación infinita suave (solo después de caer) */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+                  className="w-full h-full flex items-center justify-center rounded-full bg-[#0b0b0c]"
+                >
+                  <Image 
+                    src="/assets/gota.png" 
+                    alt="Eliud" 
+                    width={160} 
+                    height={160} 
+                    className="rounded-full p-2 drop-shadow-[0_0_15px_rgba(59,130,246,0.7)]" 
+                  />
+                </motion.div>
+              </motion.div>
+
+              {/* ONDAS DE AGUA (SPLASH) - Aparecen justo al impacto */}
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ 
+                    opacity: [0, 0.6, 0], 
+                    scale: [0, 2.5], 
+                    borderColor: ["#60a5fa", "#22d3ee", "#60a5fa"]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    delay: 1.0 + (i * 0.2), // Sincronizado con el choque de la gota
+                    ease: "easeOut" 
+                  }}
+                  className="absolute w-full h-full border-2 rounded-full z-10"
+                  style={{ boxShadow: "0 0 20px rgba(34, 211, 238, 0.3)" }}
+                />
+              ))}
+
+              {/* Base visual del "mar" donde choca */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 w-[160%] h-[40px] bg-gradient-to-r from-blue-900/0 via-blue-600/20 to-blue-900/0 blur-md rounded-full z-0"
+              />
             </div>
+
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
-              Hola, soy <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Eliud</span> 👋
+              Hola, soy <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Eliud</span> 
             </h1>
             <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-              Desarrollador Fullstack transformando problemas complejos en soluciones digitales <span className="text-blue-400 font-semibold">seguras y elegantes.</span>
+              Desarrollador Fullstack transformando problemas complejos en soluciones <span className="text-blue-400 font-semibold">seguras y elegantes.</span>
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#proyectos" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-blue-600/20 active:scale-95">
@@ -91,7 +149,7 @@ export default function Home() {
                 Contáctame
               </a>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* PROYECTOS SECTION */}
@@ -197,61 +255,73 @@ export default function Home() {
           </div>
         </section>
 
-       {/* BOTÓN FLOTANTE REDISEÑADO (FIX) */}
-<div className="fixed bottom-8 right-8 flex flex-col items-end z-[9999]">
-  <AnimatePresence>
-    {contactOpen && (
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.5, y: 20 }} 
-        animate={{ opacity: 1, scale: 1, y: 0 }} 
-        exit={{ opacity: 0, scale: 0.5, y: 20 }}
-        className="flex flex-col gap-4 mb-6"
-      >
-        {/* WhatsApp */}
-        <a 
-          href="https://wa.me/529513180462" 
-          target="_blank" 
-          className="w-14 h-14 bg-[#25D366] rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] flex items-center justify-center hover:scale-110 transition-transform active:scale-90"
-        >
-          <MessageSquare size={28} className="text-white" />
-        </a>
+        {/* BOTÓN FLOTANTE REDISEÑADO CON ANIMACIONES */}
+        <div className="fixed bottom-8 right-8 flex flex-col items-end z-[9999]">
+          <AnimatePresence>
+            {contactOpen && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.5, y: 20 }} 
+                animate={{ opacity: 1, scale: 1, y: 0 }} 
+                exit={{ opacity: 0, scale: 0.5, y: 20 }}
+                className="flex flex-col gap-4 mb-6"
+              >
+                {/* WhatsApp */}
+                <a 
+                  href="https://wa.me/529513180462" 
+                  target="_blank" 
+                  className="w-14 h-14 bg-[#25D366] rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] flex items-center justify-center hover:scale-110 transition-transform active:scale-90"
+                >
+                  <MessageSquare size={28} className="text-white" />
+                </a>
 
-        {/* Gmail */}
-        <a 
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=beecode.mx@gmail.com" 
-          target="_blank" 
-          className="w-14 h-14 bg-white rounded-full shadow-[0_8px_30px_rgb(255,255,255,0.2)] flex items-center justify-center hover:scale-110 transition-transform active:scale-90"
-        >
-          <Mail size={28} className="text-[#ea4335]" />
-        </a>
+                {/* Gmail */}
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=beecode.mx@gmail.com" 
+                  target="_blank" 
+                  className="w-14 h-14 bg-white rounded-full shadow-[0_8px_30px_rgb(255,255,255,0.2)] flex items-center justify-center hover:scale-110 transition-transform active:scale-90"
+                >
+                  <Mail size={28} className="text-[#ea4335]" />
+                </a>
 
-        {/* LinkedIn */}
-        <a 
-          href="https://linkedin.com/in/eliudgh" 
-          target="_blank" 
-          className="w-14 h-14 bg-[#0077B5] rounded-full shadow-[0_8px_30px_rgb(0,119,181,0.3)] flex items-center justify-center hover:scale-110 transition-transform active:scale-90"
-        >
-          {/* Si no importaste 'Linkedin' arriba, puedes usar este SVG rápido o añadirlo al import de lucide */}
-          <svg className="w-7 h-7 fill-white" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-      </motion.div>
-    )}
-  </AnimatePresence>
+                {/* LinkedIn */}
+                <a 
+                  href="https://linkedin.com/in/eliudgh" 
+                  target="_blank" 
+                  className="w-14 h-14 bg-[#0077B5] rounded-full shadow-[0_8px_30px_rgb(0,119,181,0.3)] flex items-center justify-center hover:scale-110 transition-transform active:scale-90"
+                >
+                  <svg className="w-7 h-7 fill-white" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-  {/* Botón Principal (La Gota) */}
-  <button
-    onClick={() => setContactOpen(!contactOpen)}
-    className="w-18 h-18 bg-white rounded-full shadow-[0_0_40px_rgba(59,130,246,0.5)] flex items-center justify-center hover:scale-105 transition-all active:scale-95 z-10 border-4 border-[#0b0b0c]"
-  >
-    <Image 
-      src="/assets/gota.png" 
-      width={45} 
-      height={45} 
-      className={`transition-transform duration-500 ${contactOpen ? "rotate-[135deg] scale-90" : "scale-110"}`} 
-      alt="Logo" 
-    />
-  </button>
-</div>
+          {/* Botón Principal (La Gota Animada) */}
+          <motion.button
+            onClick={() => setContactOpen(!contactOpen)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-18 h-18 bg-white rounded-full shadow-[0_0_40px_rgba(59,130,246,0.6)] flex items-center justify-center z-10 border-4 border-[#0b0b0c] relative overflow-hidden group"
+          >
+            {/* Efecto de pulso interno */}
+            {!contactOpen && (
+              <motion.div 
+                animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.1, 0.4] }}
+                transition={{ repeat: Infinity, duration: 2.5 }}
+                className="absolute inset-0 bg-blue-400 rounded-full"
+              />
+            )}
+            
+            <Image 
+              src="/assets/gota.png" 
+              width={45} 
+              height={45} 
+              className={`relative z-10 transition-all duration-700 ease-in-out ${
+                contactOpen ? "rotate-[135deg] scale-75" : "scale-110"
+              }`} 
+              alt="Logo" 
+            />
+          </motion.button>
+        </div>
       </main>
     </div>
   );

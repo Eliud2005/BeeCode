@@ -49,10 +49,10 @@ const faqs: FAQ[] = [
 
   // 🚀 INICIO DE PROYECTO
   {
-    keywords: ["empezar", "iniciar", "proyecto", "contratar", "cita", "agendar"],
+    keywords: ["empezar", "iniciar", "como", "proyecto", "contratar", "cita", "agendar"],
     answers: [
-      "¡Excelente! 🚀 ¿Qué tipo de proyecto tienes en mente?",
-      "Perfecto 👍 Cuéntame un poco sobre el proyecto que quieres desarrollar."
+      "¡Excelente! 🚀 Puedes contactarnos por WhatsApp para comenzar.",
+      "Para iniciar un proyecto, lo mejor es que me contactes por WhatsApp 📲 y te guiare en el proceso."
     ]
   },
 
@@ -88,7 +88,8 @@ const faqs: FAQ[] = [
     answers: [
       "Soy el asistente virtual de BeeCode 🤖. Estoy aquí para ayudarte con información rápida y orientarte."
     ]
-  }
+  },
+
 ];
 
 /**

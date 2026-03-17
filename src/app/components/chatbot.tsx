@@ -189,7 +189,7 @@ export default function Chatbot() {
                 </button>
               </div>
               <p className="text-[9px] text-slate-500 text-center mt-3 uppercase tracking-tighter">
-                Tecnología GPT-4o · BeeCode.mx
+                Tecnología GPT-4o · Eliud
               </p>
             </div>
           </motion.div>

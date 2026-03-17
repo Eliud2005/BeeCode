@@ -1,6 +1,6 @@
 export const proyectos = [
   {
-    title: "Plataforma de conexión para hospitales, farmacias y laboratorios",
+    title: "Atenea",
     desc: "Proyecto que permite registrar hospitales, farmacias y laboratorios, mostrando su ubicación en un mapa interactivo.",
     url: '',
     images: [
@@ -18,7 +18,7 @@ export const proyectos = [
     ],
   },
   {
-    title: "Sistema de gestión ciudadana – Santo Tomás Jalieza",
+    title: "Gestor ciudadano",
     desc: "Desarrollo de una plataforma para gestionar información de los habitantes y servicios públicos del municipio, implementando registro y consultas.",
     url: '',
     images: [
@@ -34,7 +34,7 @@ export const proyectos = [
   
   },
   {
-    title: "Web para cocina Oaxiyo",
+    title: "Cocina Oaxiyo",
     desc: "Web sencilla para cocina gastronómica Oaxiyo",
     url: "https://oxiyo.netlify.app/#menu",
   
